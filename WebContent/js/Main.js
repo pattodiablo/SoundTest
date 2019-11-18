@@ -2,6 +2,9 @@
 var game = new Phaser.Game(540, 960, Phaser.AUTO, "", this);
 
  var notas = ['nota1','nota1','nota1','nota1','nota2','nota2','nota2','nota2','nota1','nota2'];
+
+
+
  var notaHeader = 0;
 
 function init() {
