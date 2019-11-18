@@ -11,10 +11,15 @@ function preload() {
 	
         game.load.image('speaker', 'assets/speaker.png');
         game.load.audio('drum1', ['assets/drum1.mp3','assets/drum1.ogg']);
+
+
+        game.load.audio('acorde1', ['assets/sounds/acorde1.mp3','assets/sounds/acorde1.ogg']);
+         game.load.audio('acorde2', ['assets/sounds/acorde2.mp3','assets/sounds/acorde2.ogg']);
 }
 
 function create() {
-      drum1 = game.add.audio('drum1');
+    acorde1 = game.add.audio('acorde1');
+    acorde2 = game.add.audio('acorde2');
 
 	game.stage.backgroundColor = 0x000000;
 	var graphics = game.add.graphics(0, 0);
@@ -36,9 +41,11 @@ function create() {
     musicBtn = game.add.sprite(game.stage.width/2, this.game.height/2, graphics.generateTexture());
     musicBtn.anchor.set(0.5);
     
-    game.time.events.loop(Phaser.Timer.SECOND*1, crearNota, this);
+    game.time.events.loop(Phaser.Timer.SECOND*1, crearNota1, this);
     
-	game.physics.arcade.enable(musicBtn);
+	game.time.events.loop(Phaser.Timer.SECOND*1, crearNota2, this);
+    
+    game.physics.arcade.enable(musicBtn);
 
 	game.physics.arcade.gravity.y = 200;
 
@@ -53,20 +60,36 @@ function create() {
     graphics.destroy();
 	
 }
- function crearNota(){
+ function crearNota1(){
         
 
-        musicTrigger = game.add.sprite(270, -100, 'speaker');
+        musicTrigger = game.add.sprite(100, -100, 'speaker');
       musicTrigger.anchor.set(0.5);
          musicTrigger.inputEnabled = true;
-         musicTrigger.events.onInputDown.add(doMusic, this);
+         musicTrigger.events.onInputDown.add(acorde1Trigger, this);
         game.physics.arcade.enable(musicTrigger);
      
     
     }
-function doMusic(){
-        drum1.play();
+ function crearNota2(){
+        
+
+        musicTrigger = game.add.sprite(360, -100, 'speaker');
+      musicTrigger.anchor.set(0.5);
+         musicTrigger.inputEnabled = true;
+         musicTrigger.events.onInputDown.add(acorde2Trigger, this);
+        game.physics.arcade.enable(musicTrigger);
+     
+    
+    }
+function acorde1Trigger(){
+        acorde1.play();
   
+}
+
+function acorde2Trigger(){
+
+       acorde2.play();
 }
 
 function update() {
