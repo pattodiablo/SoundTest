@@ -1,10 +1,14 @@
 
 var game = new Phaser.Game(540, 960, Phaser.AUTO, "", this);
 
+ var notas = ['nota1','nota1','nota1','nota1','nota2','nota2','nota2','nota2','nota1','nota2'];
+ var notaHeader = 0;
+
 function init() {
 	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	game.scale.pageAlignHorizontally = true;
 	game.scale.pageAlignVertically = true;
+    
 }
 
 function preload() {
@@ -14,10 +18,13 @@ function preload() {
 
 
         game.load.audio('acorde1', ['assets/sounds/acorde1.mp3','assets/sounds/acorde1.ogg']);
-         game.load.audio('acorde2', ['assets/sounds/acorde2.mp3','assets/sounds/acorde2.ogg']);
+        game.load.audio('acorde2', ['assets/sounds/acorde2.mp3','assets/sounds/acorde2.ogg']);
 }
 
 function create() {
+   
+   
+
     acorde1 = game.add.audio('acorde1');
     acorde2 = game.add.audio('acorde2');
 
@@ -41,9 +48,8 @@ function create() {
     musicBtn = game.add.sprite(game.stage.width/2, this.game.height/2, graphics.generateTexture());
     musicBtn.anchor.set(0.5);
     
-    game.time.events.loop(Phaser.Timer.SECOND*1, crearNota1, this);
-    
-	game.time.events.loop(Phaser.Timer.SECOND*1, crearNota2, this);
+
+    game.time.events.loop(Phaser.Timer.SECOND*0.5, decodeMusicTrack, this);
     
     game.physics.arcade.enable(musicBtn);
 
@@ -51,15 +57,34 @@ function create() {
 
 
 	musicBtn.body.allowGravity = false;
-	musicBtn.body.immovable = true;
-
-    
+	musicBtn.body.immovable = true;    
 
     //  And destroy the original graphics object
   
     graphics.destroy();
 	
 }
+
+function decodeMusicTrack(){
+
+var queNota = notas[notaHeader];
+notaHeader++;
+
+    switch (queNota){
+
+        case 'nota1':
+        crearNota1();
+        break;
+
+        case 'nota2':
+         crearNota2();
+        break;
+
+    }
+
+
+}
+
  function crearNota1(){
         
 
