@@ -4,3 +4,6 @@ links de javascript y audio
 https://github.com/enzienaudio/hvcc/blob/master/docs/07.javascript.md
 https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
 https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_behind_Web_Audio_API
+
+csound y jscript
+http://write.flossmanuals.net/csound/web-based-csound/
