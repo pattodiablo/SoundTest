@@ -7,3 +7,5 @@ https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Basic_concepts_be
 
 csound y jscript
 http://write.flossmanuals.net/csound/web-based-csound/
+
+https://tonejs.github.io/examples/simpleSynth.html
