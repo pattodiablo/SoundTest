@@ -8,10 +8,13 @@
 
 <script type="text/javascript">
 var synth = new Tone.Synth().toMaster()
-synth.triggerAttackRelease('C4', 0.5, 0)
-synth.triggerAttackRelease('E4', 0.5, 1)
-synth.triggerAttackRelease('G4', 0.5, 2)
-synth.triggerAttackRelease('B4', 0.5, 3)
+synth.triggerAttackRelease('C4', '4n', 1)
+synth.triggerAttackRelease('D4', '4n', 1.5)
+synth.triggerAttackRelease('E4', '4n', 2.5)
+synth.triggerAttackRelease('G4', '4n', 3.5)
+synth.triggerAttackRelease('B3', '2n', 5)
+synth.triggerAttackRelease('C4', '2n', 7)
+
 //pass in an array of events
 
 
