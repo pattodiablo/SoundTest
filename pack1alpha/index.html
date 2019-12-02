@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ejemplo tone</title>
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/webcomponents-bundle.js"></script>
+<script src="https://unpkg.com/tone"></script>
+<script src="https://unpkg.com/@tonejs/ui"></script>
+
+<script type="text/javascript">
+var synth = new Tone.Synth().toMaster()
+synth.triggerAttackRelease('C4', '4n', 1)
+synth.triggerAttackRelease('D4', '4n', 1.5)
+synth.triggerAttackRelease('E4', '4n', 2.5)
+synth.triggerAttackRelease('G4', '4n', 3.5)
+synth.triggerAttackRelease('B3', '2n', 5)
+synth.triggerAttackRelease('C4', '2n', 7)
+
+//pass in an array of events
+
+
+
+</script>
+
+</head>
+<body>
+
+
+</body>
+</html>
