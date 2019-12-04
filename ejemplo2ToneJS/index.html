@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ejemplo tone</title>
+
+<script src="js/tone.js"></script>
+
+<script type="text/javascript">
+    var synth = new Tone.Synth().toMaster();
+   function sonar(){
+
+
+
+    //pass in an array of events
+    var part = new Tone.Part(function(time, event){
+        //the events will be given to the callback with the time they occur
+        synth.triggerAttackRelease(event.note, event.dur, time)
+    }, [{ time : 1, note : 'C4', dur : '4n'},
+        { time : 1.5, note : 'D4', dur : '4n'},
+        { time : 2, note : 'E4', dur : '4n'},
+        { time : 2.5, note : 'F4', dur : '4n'},
+        { time : 3, note : 'G4', dur : '4n'},
+        { time : 4, note : 'G4', dur : '4n'}])
+
+    //start the part at the beginning of the Transport's timeline
+    part.start(0)
+
+    //loop the part 3 times
+    part.loop = 1
+    part.loopEnd = '4m'
+    Tone.Transport.toggle();
+//start/stop the transport
+   } 
+
+  function sonar2(){
+
+
+
+    //pass in an array of events
+    var part = new Tone.Part(function(time, event){
+        //the events will be given to the callback with the time they occur
+        synth.triggerAttackRelease(event.note, event.dur, time)
+    }, [{ time : 0, note : 'C4', dur : '4n'},
+        { time : {'4n' : 1, '4n' : 1}, note : 'D4', dur : '4n'},
+        { time : {'3n' : 1, '4n' : 1}, note : 'B4', dur : '4n'}])
+
+    //start the part at the beginning of the Transport's timeline
+    part.start(0)
+
+    //loop the part 3 times
+    part.loop = 1
+    part.loopEnd = '4m'
+    Tone.Transport.toggle();
+//start/stop the transport
+   } 
+
+
+
+</script>
+
+</head>
+<body style="text-align: center;">
+    <button onclick="sonar()" style="width: 100%; height: 50px;" >PLAY THA FUCKING SHIT NUMEROS</button>
+<div style="height: 30px;"></div>
+<button onclick="sonar2()" style="width: 100%; height: 50px;" >PLAY THA FUCKING SHIT NS</button>
+
+
+</body>
+</html>
