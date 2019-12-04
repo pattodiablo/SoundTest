@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<meta charset="UTF-8" />
+<meta name=viewport content="width=device-width, initial-scale=1">
+
+<title>SoundTest</title>
+
+<script src="lib/phaser.js"></script>
+<script src="js/Main.js"></script>
+<script src="js/tone.js"></script>
+
+<script type="text/javascript">
+var synth = new Tone.Synth({
+			"oscillator" : {
+				"type" : "square",
+				"harmonicity" : 0.5,
+				"modulationType" : "sine"
+			},
+			"envelope" : {
+				"attackCurve" : "exponential",
+				"attack" : 0.5,
+				"decay" : 0.5,
+				"sustain" : 1,
+				"release" : 1,
+			},
+			"portamento" : 0.05
+		}).toMaster();
+   
+   function btnSonar(nombreNota){
+
+ switch (nombreNota){
+
+ 	case 'btn1':
+ 	console.log('btn0');
+ 		 synth.triggerAttackRelease("C4");
+ 	break;
+
+ 	case 'btn2':
+ 	console.log('btn1');
+ 		 synth.triggerAttack("D4");
+ 	break;
+
+ 	case 'btn3':
+ 	console.log('btn2');
+ 		 synth.triggerAttack("E4");
+ 	break;
+
+	case 'btn4':
+	console.log('btn3');
+ 		 synth.triggerAttack("F4");
+ 	break;
+
+	case 'btn5':
+	console.log('btn4');
+ 		 synth.triggerAttack("G4");
+ 	break;
+
+ }
+ ;
+   } 
+ function btnParar(nombreNota){
+synth.triggerRelease();
+  
+   } 
+
+
+ 
+
+dothis();
+
+
+</script>
+<style>
+body {
+	background: #525252;
+	margin: 0;
+	padding: 0;
+}
+</style>
+
+</head>
+<body>
+</body>
+</html>
