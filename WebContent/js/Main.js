@@ -6,11 +6,13 @@ var game = new Phaser.Game(540, 960, Phaser.AUTO, "", this);
 
 
  var notaHeader = 0;
-
+ var tiempoGeneral = 500;
+ var pulso=0;
 function init() {
 	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	game.scale.pageAlignHorizontally = true;
 	game.scale.pageAlignVertically = true;
+
       
 }
 
@@ -52,7 +54,7 @@ function create() {
   
     
     var timer = game.time.create(false);
-    timer.loop(1000, crearNotasRandom, this);
+    timer.loop(tiempoGeneral, crearNotasRandom, this);
     timer.start();
 
 
@@ -74,12 +76,15 @@ function create() {
     //  And destroy the original graphics object
   
     graphics.destroy();
-	
+
+
 }
 
 function crearNotasRandom(){
     
-    var tamanoNota = 100;
+    var tiempoNotasExisten = [1,2,4,8];
+    var tiempoNota = tiempoNotasExisten[Math.floor(Math.random() * tiempoNotasExisten.length)];
+    var tamanoNota = (100/tiempoNota);
 
     var graphics2 = game.add.graphics(0, 0);
     graphics2.beginFill(0x7D7D7D);
@@ -96,6 +101,39 @@ function crearNotasRandom(){
 
     var notaDrop = game.add.sprite(90*pos+5, 0, graphics2.generateTexture());
     notaDrop.anchor.set(0.5);
+    notaDrop.tiempo=tiempoNota;
+    game.physics.enable(notaDrop, Phaser.Physics.ARCADE);
+    notaDrop.body.gravity.y = 200;
+    notasGrupo.add(notaDrop);
+    graphics2.destroy();
+}
+
+function crearNotas(){
+    
+    var cancion = [{time:1, note:'C4', dur:'4n'},{time:1, note:'C4', dur:'4n'}];
+    pulso++;
+    notaActual = cancion[pulso];
+
+    var tiempoNotasExisten = [1,2,4,8];
+    var tiempoNota = tiempoNotasExisten[Math.floor(Math.random() * tiempoNotasExisten.length)];
+    var tamanoNota = (100/tiempoNota);
+
+    var graphics2 = game.add.graphics(0, 0);
+    graphics2.beginFill(0x7D7D7D);
+    graphics2.lineStyle(1, 0xA6A6A6, 1);
+    graphics2.moveTo(0,0);
+    graphics2.lineTo(0, tamanoNota);
+    graphics2.lineTo(80, tamanoNota);
+    graphics2.lineTo(80, 0);
+    graphics2.lineTo(0, 0);
+    graphics2.endFill();
+
+
+    var pos = Math.ceil(Math.random()*5);
+
+    var notaDrop = game.add.sprite(90*pos+5, 0, graphics2.generateTexture());
+    notaDrop.anchor.set(0.5);
+    notaDrop.tiempo=tiempoNota;
     game.physics.enable(notaDrop, Phaser.Physics.ARCADE);
     notaDrop.body.gravity.y = 200;
     notasGrupo.add(notaDrop);
@@ -106,14 +144,14 @@ function dothis(){
     console.log('do a shit in phaser');
 }
 
-function sonarMusica(sprite){
+function sonarMusica(sprite, tiempoNota){
 var nombreNota = sprite.name;
-btnSonar(nombreNota);
+btnSonar(nombreNota, tiempoNota);
 }
 
-function pararMusica(sprite){
+function pararMusica(sprite, tiempoNota){
 var nombreNota = sprite.name;
-btnParar(nombreNota);
+btnParar(nombreNota, tiempoNota);
 }
 
 
@@ -137,38 +175,6 @@ notaHeader++;
 
 }
 
- function crearNota1(){
-        
-
-        musicTrigger = game.add.sprite(100, -100, 'speaker');
-      musicTrigger.anchor.set(0.5);
-         musicTrigger.inputEnabled = true;
-         musicTrigger.events.onInputDown.add(acorde1Trigger, this);
-        game.physics.arcade.enable(musicTrigger);
-     
-    
-    }
- function crearNota2(){
-        
-
-        musicTrigger = game.add.sprite(360, -100, 'speaker');
-      musicTrigger.anchor.set(0.5);
-         musicTrigger.inputEnabled = true;
-         musicTrigger.events.onInputDown.add(acorde2Trigger, this);
-        game.physics.arcade.enable(musicTrigger);
-     
-    
-    }
-function acorde1Trigger(){
-        acorde1.play();
-  
-}
-
-function acorde2Trigger(){
-
-       acorde2.play();
-}
-
 function update() {
 
  game.physics.arcade.overlap(notasGrupo, teclasGrupo,null,overlapHandler,this)
@@ -176,6 +182,12 @@ function update() {
 
 }
 
-    function overlapHandler(nota, tecla){
-sonarMusica(tecla);
+function overlapHandler(nota, tecla){
+console.log(nota.tiempo);
+       notasGrupo.remove(nota);
+
+       sonarMusica(tecla,nota.tiempo);
+       
+
+        
 }
