@@ -51,10 +51,10 @@ function create() {
  
     graphics.endFill();
     
-
+  
     
     var timer = game.time.create(false);
-    timer.loop(tiempoGeneral, crearNotas, this);
+    timer.loop(tiempoGeneral, crearNotasRandom, this);
     timer.start();
 
 
@@ -110,98 +110,13 @@ function crearNotasRandom(){
 
 function crearNotas(){
     
-    var cancion = [{ time : 1, note : 'C4', dur : '4n'},
-        { time : 1.5, note : 'C4', dur : '4n'},
-        { time : 2, note : 'C4', dur : '4n'},
-        { time : 2.5, note : 'D4', dur : '4n'},
-        { time : 3, note : 'E4', dur : '2n'},
-        { time : 4, note : 'E4', dur : '2n'}, //HASTA AQUI PARTE1
-        { time : 5, note : 'D4', dur : '4n'},
-        { time : 5.5, note : 'C4', dur : '4n'},
-        { time : 6, note : 'D4', dur : '4n'},
-        { time : 6.5, note : 'E4', dur : '4n'},
-        { time : 7, note : 'C4', dur : '2n'}, //HASTA AQUI PARTE2
-        { time : 9, note : 'C4', dur : '4n'}, //SE REPITE TODO DE NUEVO
-        { time : 9.5, note : 'C4', dur : '4n'},
-        { time : 10, note : 'C4', dur : '4n'},
-        { time : 10.5, note : 'D4', dur : '4n'},
-        { time : 11, note : 'E4', dur : '2n'},
-        { time : 12, note : 'E4', dur : '2n'},  //HASTA AQUI PARTE3
-        { time : 13, note : 'D4', dur : '4n'},
-        { time : 13.5, note : 'C4', dur : '4n'},
-        { time : 14, note : 'D4', dur : '4n'},
-        { time : 14.5, note : 'E4', dur : '4n'},
-        { time : 15, note : 'C4', dur : '2n'}, //HASTA AQUI PARTE4
-        { time : 16.5, note : 'E4', dur : '4n'},
-        { time : 17, note : 'C4', dur : '2n'},
-        { time : 18.5, note : 'E4', dur : '4n'},
-        { time : 19, note : 'C4', dur : '2n'},
-        { time : 20.5, note : 'E4', dur : '4n'},
-        { time : 21, note : 'C4', dur : '4n'},
-        { time : 21.5, note : 'E4', dur : '4n'},
-        { time : 22, note : 'C4', dur : '4n'},
-        { time : 22.5, note : 'E4', dur : '4n'},
-        { time : 23, note : 'C4', dur : '2n'}];
-   if(pulso>=cancion.length-1){
-    pulso = 0;
-   }else{
-
+    var cancion = [{time:1, note:'C4', dur:'4n'},{time:1, note:'C4', dur:'4n'}];
     pulso++;
-   }
-    
     notaActual = cancion[pulso];
-    var notaPos = notaActual.note;
 
     var tiempoNotasExisten = [1,2,4,8];
-    var tiempoNota = notaActual.dur;
-  tiempoGeneral=(notaActual.time)*5;
-  console.log(tiempoGeneral);
-   switch (tiempoNota){
-
-    case '1n':
-    var tamanoNota = 100;
-    break;
-
-    case '2n':
-    var tamanoNota = 50;
-    break;
-
-     case '4n':
-    var tamanoNota = 25;
-    break;
-
-     case '8n':
-    var tamanoNota = 12.5;
-    break;
-}
-
-
-   switch (notaPos){
-
-    case 'C4':
-    var pos = 1;
-    break;
-
-    case 'D4':
-   var pos = 2;
-    break;
-
-     case 'E4':
-   var pos = 3;
-    break;
-
-     case 'F4':
-   var pos = 4;
-    break;
-
-     case 'G4':
-   var pos = 5;
-    break;
-}
-
-
-
-   
+    var tiempoNota = tiempoNotasExisten[Math.floor(Math.random() * tiempoNotasExisten.length)];
+    var tamanoNota = (100/tiempoNota);
 
     var graphics2 = game.add.graphics(0, 0);
     graphics2.beginFill(0x7D7D7D);
@@ -214,8 +129,7 @@ function crearNotas(){
     graphics2.endFill();
 
 
-
-
+    var pos = Math.ceil(Math.random()*5);
 
     var notaDrop = game.add.sprite(90*pos+5, 0, graphics2.generateTexture());
     notaDrop.anchor.set(0.5);

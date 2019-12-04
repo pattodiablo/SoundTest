@@ -20,12 +20,12 @@ var synth = new Tone.Synth({
 			},
 			"envelope" : {
 				"attackCurve" : "exponential",
-				"attack" : 0.1,
+				"attack" : 0.5,
 				"decay" : 0.5,
-				"sustain" : 0.5,
-				"release" : 0.1,
+				"sustain" : 1,
+				"release" : 1,
 			},
-			"portamento" : 0.1
+			"portamento" : 0.05
 		}).toMaster();
    
    function btnSonar(nombreNota, tiempoNota){
@@ -33,29 +33,29 @@ var synth = new Tone.Synth({
  switch (nombreNota){
 
  	case 'btn1':
-
- 
- 		 synth.triggerAttackRelease("C4", tiempoNota );
+ 	console.log('btn0');
+ 	console.log('tiempoLlegado ' + tiempoNota);
+ 		 synth.triggerAttackRelease("C4", tiempoNota + 'n');
  	break;
 
  	case 'btn2':
-
- 		 synth.triggerAttackRelease("D4", tiempoNota );
+ 	console.log('btn1');
+ 		 synth.triggerAttackRelease("D4", tiempoNota + 'n');
  	break;
 
  	case 'btn3':
-
- 		 synth.triggerAttackRelease("E4", tiempoNota );
+ 	console.log('btn2');
+ 		 synth.triggerAttackRelease("E4", tiempoNota + 'n');
  	break;
 
 	case 'btn4':
-
- 		 synth.triggerAttackRelease("F4", tiempoNota );
+	console.log('btn3');
+ 		 synth.triggerAttackRelease("F4", tiempoNota + 'n');
  	break;
 
 	case 'btn5':
-
- 		 synth.triggerAttackRelease("G4", tiempoNota );
+	console.log('btn4');
+ 		 synth.triggerAttackRelease("G4", tiempoNota + 'n');
  	break;
 
  }
