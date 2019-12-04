@@ -52,7 +52,7 @@ function create() {
   
     
     var timer = game.time.create(false);
-    timer.loop(300, crearNotasRandom, this);
+    timer.loop(1000, crearNotasRandom, this);
     timer.start();
 
 
@@ -79,7 +79,7 @@ function create() {
 
 function crearNotasRandom(){
     
-    var tamanoNota = Math.ceil(Math.random()*100);
+    var tamanoNota = 100;
 
     var graphics2 = game.add.graphics(0, 0);
     graphics2.beginFill(0x7D7D7D);
