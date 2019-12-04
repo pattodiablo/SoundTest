@@ -11,7 +11,7 @@ function init() {
 	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	game.scale.pageAlignHorizontally = true;
 	game.scale.pageAlignVertically = true;
-    
+      
 }
 
 function preload() {
@@ -25,9 +25,11 @@ function preload() {
 }
 
 function create() {
-   
-   
-
+ 
+      teclasGrupo = game.add.group();
+         notasGrupo = game.add.group();
+ game.physics.startSystem(Phaser.Physics.ARCADE);
+   game.physics.arcade.gravity.y = 100;
     acorde1 = game.add.audio('acorde1');
     acorde2 = game.add.audio('acorde2');
 
@@ -40,33 +42,80 @@ function create() {
     
     // draw a shape
     graphics.moveTo(0,0);
-    graphics.lineTo(0, 80);
-    graphics.lineTo(250, 80);
-    graphics.lineTo(250, 0);
+    graphics.lineTo(0, 250);
+    graphics.lineTo(80, 250);
+    graphics.lineTo(80, 0);
     graphics.lineTo(0, 0);
  
     graphics.endFill();
-     
     
-    musicBtn = game.add.sprite(game.stage.width/2, this.game.height/2, graphics.generateTexture());
-    musicBtn.anchor.set(0.5);
+  
     
-
-    game.time.events.loop(Phaser.Timer.SECOND*0.5, decodeMusicTrack, this);
-    
-    game.physics.arcade.enable(musicBtn);
-
-	game.physics.arcade.gravity.y = 200;
+    var timer = game.time.create(false);
+    timer.loop(300, crearNotasRandom, this);
+    timer.start();
 
 
-	musicBtn.body.allowGravity = false;
-	musicBtn.body.immovable = true;    
-
+    for(var i=1; i<=5; i++){
+        var musicBtn = game.add.sprite(90*i+5, this.game.height/1.2, graphics.generateTexture());
+            musicBtn.anchor.set(0.5);
+            musicBtn.inputEnabled = true;
+            musicBtn.name = 'btn'+i;
+            var eventoDown = 'sonarMusica'+2;
+            var eventoUp = 'pararMusica'+2;
+            console.log(eventoDown);
+            musicBtn.events.onInputDown.add(sonarMusica, this);
+            musicBtn.events.onInputUp.add(pararMusica, this);
+            game.physics.enable(musicBtn, Phaser.Physics.ARCADE);
+            musicBtn.body.allowGravity = false;
+            musicBtn.body.immovable = true;
+             teclasGrupo.add(musicBtn);
+    }
     //  And destroy the original graphics object
   
     graphics.destroy();
 	
 }
+
+function crearNotasRandom(){
+    
+    var tamanoNota = Math.ceil(Math.random()*100);
+
+    var graphics2 = game.add.graphics(0, 0);
+    graphics2.beginFill(0x7D7D7D);
+    graphics2.lineStyle(1, 0xA6A6A6, 1);
+    graphics2.moveTo(0,0);
+    graphics2.lineTo(0, tamanoNota);
+    graphics2.lineTo(80, tamanoNota);
+    graphics2.lineTo(80, 0);
+    graphics2.lineTo(0, 0);
+    graphics2.endFill();
+
+
+    var pos = Math.ceil(Math.random()*5);
+
+    var notaDrop = game.add.sprite(90*pos+5, 0, graphics2.generateTexture());
+    notaDrop.anchor.set(0.5);
+    game.physics.enable(notaDrop, Phaser.Physics.ARCADE);
+    notaDrop.body.gravity.y = 200;
+    notasGrupo.add(notaDrop);
+    graphics2.destroy();
+}
+
+function dothis(){
+    console.log('do a shit in phaser');
+}
+
+function sonarMusica(sprite){
+var nombreNota = sprite.name;
+btnSonar(nombreNota);
+}
+
+function pararMusica(sprite){
+var nombreNota = sprite.name;
+btnParar(nombreNota);
+}
+
 
 function decodeMusicTrack(){
 
@@ -121,7 +170,12 @@ function acorde2Trigger(){
 }
 
 function update() {
-	
-	
-	
+
+ game.physics.arcade.overlap(notasGrupo, teclasGrupo,null,overlapHandler,this)
+ 
+
+}
+
+    function overlapHandler(nota, tecla){
+sonarMusica(tecla);
 }
