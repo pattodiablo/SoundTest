@@ -26,10 +26,10 @@ function preload() {
 
 function create() {
  
-      teclasGrupo = game.add.group();
-         notasGrupo = game.add.group();
- game.physics.startSystem(Phaser.Physics.ARCADE);
-   game.physics.arcade.gravity.y = 100;
+    teclasGrupo = game.add.group();
+    notasGrupo = game.add.group();
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.physics.arcade.gravity.y = 100;
     acorde1 = game.add.audio('acorde1');
     acorde2 = game.add.audio('acorde2');
 
@@ -52,12 +52,13 @@ function create() {
   
     
     var timer = game.time.create(false);
-    timer.loop(300, crearNotasRandom, this);
+    timer.loop(500, crearNotasRandom, this);
     timer.start();
 
 
     for(var i=1; i<=5; i++){
-        var musicBtn = game.add.sprite(90*i+5, this.game.height/1.2, graphics.generateTexture());
+
+            var musicBtn = game.add.sprite(90*i+5, this.game.height/1.2, graphics.generateTexture());
             musicBtn.anchor.set(0.5);
             musicBtn.inputEnabled = true;
             musicBtn.name = 'btn'+i;
