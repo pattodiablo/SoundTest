@@ -1,11 +1,7 @@
 
 var game = new Phaser.Game(540, 960, Phaser.AUTO, "", this);
 
- var notas = ['nota1','nota1','nota1','nota1','nota2','nota2','nota2','nota2','nota1','nota2'];
-
-
-
- var notaHeader = 0;
+  var notaHeader = 0;
  var tiempoGeneral = 2000;
  var compas=0;
  var timer;
@@ -234,15 +230,15 @@ function lanzarNota(notaaEjecutar){
 
    switch (notaPos){
 
-    case 'C4':
+    case 'btn1':
     var pos = 1;
     break;
 
-    case 'D4':
+    case '["D4", "F4", "A4"]':
    var pos = 2;
     break;
 
-     case 'E4':
+     case '["E4", "G4", "B4"]':
    var pos = 3;
     break;
 
