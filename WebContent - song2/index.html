@@ -13,21 +13,11 @@
 
 <script type="text/javascript">
 
-var synth = new Tone.Synth({
-			"oscillator" : {
-				"type" : "triangle",
-				"harmonicity" : 0.5,
-				"modulationType" : "sine"
-			},
-			"envelope" : {
-				"attackCurve" : "exponential",
-				"attack" : 0.001,
-				"decay" : 0.1,
-				"sustain" : 1,
-				"release" : 0.01,
-			},
-			"portamento" : 0.1
-		}).toMaster();
+var synth = new Tone.PolySynth(6, Tone.Synth, {
+  oscillator : {
+		type : "sine"
+	}
+}).toMaster();
    
    function btnSonar(nombreNota, tiempoNota){
 
@@ -36,27 +26,27 @@ var synth = new Tone.Synth({
  	case 'btn1':
 
  
- 		 synth.triggerAttackRelease("C4", tiempoNota );
+ 		synth.triggerAttackRelease(["C4", "E4", "G4"], tiempoNota);;
  	break;
 
  	case 'btn2':
 
- 		 synth.triggerAttackRelease("D4", tiempoNota );
+ 		 synth.triggerAttackRelease(["D4", "F4", "A4"], tiempoNota );
  	break;
 
  	case 'btn3':
 
- 		 synth.triggerAttackRelease("E4", tiempoNota );
+ 		 synth.triggerAttackRelease(["E4", "G4", "B4"], tiempoNota );
  	break;
 
 	case 'btn4':
 
- 		 synth.triggerAttackRelease("F4", tiempoNota );
+ 		 synth.triggerAttackRelease(["F4", "A4", "C5"], tiempoNota );
  	break;
 
 	case 'btn5':
 
- 		 synth.triggerAttackRelease("G4", tiempoNota );
+ 		 synth.triggerAttackRelease(["G4", "B4", "D5"], tiempoNota );
  	break;
 
  }
