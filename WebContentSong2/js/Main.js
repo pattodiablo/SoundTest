@@ -109,38 +109,38 @@ function crearNotasRandom(){
 
 function cancionCompases(){
 
-    cancion = [{ time : 1, note : ["C4", "E4", "G4"], dur : '4n'},
-        { time : 1.25, note : ["C4", "E4", "G4"], dur : '4n'},
-        { time : 1.5, note : ["C4", "E4", "G4"], dur : '4n'},
-        { time : 1.75, note : ["D4", "F4", "A4"], dur : '4n'},
-        { time : 2, note : ["E4", "G4", "B4"], dur : '2n'},
-        { time : 2.5, note : ["E4", "G4", "B4"], dur : '2n'}, //HASTA AQUI PARTE1
-        { time : 3, note : ["D4", "F4", "A4"], dur : '4n'},
-        { time : 3.25, note : ["C4", "E4", "G4"], dur : '4n'},
-        { time : 3.5, note : ["D4", "F4", "A4"], dur : '4n'}, 
-        { time : 3.75, note : ["E4", "G4", "B4"], dur : '4n'},
-        { time : 4, note : ["C4", "E4", "G4"], dur : '2n'}, //HASTA AQUI PARTE2
-        { time : 5, note : ["C4", "E4", "G4"], dur : '4n'}, //SE REPITE TODO DE NUEVO
-        { time : 5.25, note : ["C4", "E4", "G4"], dur : '4n'},
-        { time : 5.5, note : ["C4", "E4", "G4"], dur : '4n'},
-        { time : 5.75, note : ["D4", "F4", "A4"], dur : '4n'},
-        { time : 6, note : ["E4", "G4", "B4"], dur : '2n'},
-        { time : 6.5, note : ["E4", "G4", "B4"], dur : '2n'},  //HASTA AQUI PARTE3
-        { time : 7, note : ["D4", "F4", "A4"], dur : '4n'},
-        { time : 7.25, note : ["C4", "E4", "G4"], dur : '4n'},
-        { time : 7.5, note : ["D4", "F4", "A4"], dur : '4n'},
-        { time : 7.75, note : ["E4", "G4", "B4"], dur : '4n'},
-        { time : 8, note : ["C4", "E4", "G4"], dur : '2n'}, //HASTA AQUI PARTE4
-        { time : 8.75, note : ["E4", "G4", "B4"], dur : '4n'},
-        { time : 9, note : ["C4", "E4", "G4"], dur : '2n'},
-        { time : 9.75, note : ["E4", "G4", "B4"], dur : '4n'},
-        { time : 10, note : ["C4", "E4", "G4"], dur : '2n'},
-        { time : 10.75, note : ["E4", "G4", "B4"], dur : '4n'},
-        { time : 11, note : ["C4", "E4", "G4"], dur : '4n'},
-        { time : 11.25, note : ["E4", "G4", "B4"], dur : '4n'},
-        { time : 11.5, note : ["C4", "E4", "G4"], dur : '4n'},
-        { time : 11.75, note : ["E4", "G4", "B4"], dur : '4n'},
-        { time : 12, note : ["C4", "E4", "G4"], dur : '2n'}];
+    cancion = [{ time : 1, note : 'btn1', dur : '4n'},
+        { time : 1.25, note : 'btn2', dur : '4n'},
+        { time : 1.5, note : 'btn3', dur : '4n'},
+        { time : 1.75, note : 'btn1', dur : '4n'},
+        { time : 2, note : 'btn4', dur : '2n'},
+        { time : 2.5, note : 'btn5', dur : '2n'}, //HASTA AQUI PARTE1
+        { time : 3, note : 'btn3', dur : '4n'},
+        { time : 3.25, note : 'btn2', dur : '4n'},
+        { time : 3.5, note : 'btn1', dur : '4n'}, 
+        { time : 3.75, note : 'btn3', dur : '4n'},
+        { time : 4, note : 'btn5', dur : '2n'}, //HASTA AQUI PARTE2
+        { time : 5, note : 'btn1', dur : '4n'}, //SE REPITE TODO DE NUEVO
+        { time : 5.25, note : 'btn1', dur : '4n'},
+        { time : 5.5, note : 'btn1', dur : '4n'},
+        { time : 5.75, note : 'btn2', dur : '4n'},
+        { time : 6, note : 'btn3', dur : '2n'},
+        { time : 6.5, note : 'btn3', dur : '2n'},  //HASTA AQUI PARTE3
+        { time : 7, note : 'btn2', dur : '4n'},
+        { time : 7.25, note : 'btn1', dur : '4n'},
+        { time : 7.5, note : 'btn2', dur : '4n'},
+        { time : 7.75, note : 'btn3', dur : '4n'},
+        { time : 8, note : 'btn5', dur : '2n'}, //HASTA AQUI PARTE4
+        { time : 8.75, note : 'btn3', dur : '4n'},
+        { time : 9, note : 'btn1', dur : '2n'},
+        { time : 9.75, note : 'btn3', dur : '4n'},
+        { time : 10, note : 'btn1', dur : '2n'},
+        { time : 10.75, note : 'btn3', dur : '4n'},
+        { time : 11, note : 'btn4', dur : '4n'},
+        { time : 11.25, note : 'btn2', dur : '4n'},
+        { time : 11.5, note : 'btn4', dur : '4n'},
+        { time : 11.75, note : 'btn5', dur : '4n'},
+        { time : 12, note : 'btn1', dur : '2n'}];
    
 
     
@@ -234,23 +234,23 @@ function lanzarNota(notaaEjecutar){
 
    switch (notaPos){
 
-    case 'C4':
+    case 'btn1':
     var pos = 1;
     break;
 
-    case 'D4':
+    case 'btn2':
    var pos = 2;
     break;
 
-     case 'E4':
+     case 'btn3':
    var pos = 3;
     break;
 
-     case 'F4':
+     case 'btn4':
    var pos = 4;
     break;
 
-     case 'G4':
+     case 'btn5':
    var pos = 5;
     break;
 }
