@@ -108,7 +108,7 @@ function crearNotasRandom(){
     notaDrop.anchor.set(0.5);
     notaDrop.tiempo=tiempoNota;
     game.physics.enable(notaDrop, Phaser.Physics.ARCADE);
-    notaDrop.body.gravity.y = 200;
+    notaDrop.body.gravity.y = 100;
     notasGrupo.add(notaDrop);
     graphics2.destroy();
 }
