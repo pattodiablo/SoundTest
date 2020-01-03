@@ -8,6 +8,7 @@
 
     <script type="text/javascript">
       //a polysynth composed of 6 Voices of Synth
+function Polysynthea() {
 var synth = new Tone.PolySynth(6, Tone.Synth, {
   oscillator : {
 		type : "sine"
@@ -220,12 +221,15 @@ synth.triggerAttackRelease('A7', "16n",'20:1:1');
 synth.triggerAttackRelease('C7', "16n",'20:2:1');
 synth.triggerAttackRelease('E7', "16n",'20:3:1');
 
+}
     </script>
 
 </head>
 
 <body>
-
+<body style="text-align: center;">
+    <button onclick="Polysynthea()" style="width: 100%; height: 50px;" >POLYSYNTHEA</button>
+</body>
 </body>
 
 </html>
