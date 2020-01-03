@@ -6,7 +6,7 @@ var game = new Phaser.Game(540, 960, Phaser.AUTO, "", this);
 
 
  var notaHeader = 0;
- var tiempoGeneral = 2000;
+ var tiempoGeneral = 1500;
  var compas=0;
  var timer;
  var attackTime;
@@ -125,18 +125,18 @@ function cancionCompases(){
         { time : 3.25, note : 'C4', dur : '4n'},
         { time : 3.5, note : 'D4', dur : '4n'}, 
         { time : 3.75, note : 'E4', dur : '4n'},
-        { time : 4, note : 'C4', dur : '2n'}, //HASTA AQUI PARTE2
-        { time : 5, note : 'C4', dur : '4n'}, //SE REPITE TODO DE NUEVO
+        { time : 4, note : 'F4', dur : '2n'}, //HASTA AQUI PARTE2
+        { time : 5, note : 'G4', dur : '4n'}, //SE REPITE TODO DE NUEVO
         { time : 5.25, note : 'C4', dur : '4n'},
         { time : 5.5, note : 'C4', dur : '4n'},
         { time : 5.75, note : 'D4', dur : '4n'},
         { time : 6, note : 'E4', dur : '2n'},
         { time : 6.5, note : 'E4', dur : '2n'},  //HASTA AQUI PARTE3
-        { time : 7, note : 'D4', dur : '4n'},
+        { time : 7, note : 'F4', dur : '4n'},
         { time : 7.25, note : 'C4', dur : '4n'},
         { time : 7.5, note : 'D4', dur : '4n'},
         { time : 7.75, note : 'E4', dur : '4n'},
-        { time : 8, note : 'C4', dur : '2n'}, //HASTA AQUI PARTE4
+        { time : 8, note : 'G4', dur : '2n'}, //HASTA AQUI PARTE4
         { time : 8.75, note : 'E4', dur : '4n'},
         { time : 9, note : 'C4', dur : '2n'},
         { time : 9.75, note : 'E4', dur : '4n'},
