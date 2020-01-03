@@ -6,12 +6,12 @@ var game = new Phaser.Game(540, 960, Phaser.AUTO, "", this);
 
 
  var notaHeader = 0;
- var tiempoGeneral = 2000;
- var compas=0;
+ var tiempoGeneral = 1000;
+ var pulso=-1;
  var timer;
  var attackTime;
   var cancion;
-var cancionEnCompases = [];
+
 function init() {
 	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	game.scale.pageAlignHorizontally = true;
@@ -56,11 +56,10 @@ function create() {
     graphics.endFill();
     
 
-    cancionCompases();
     
- timer = game.time.create(false);
+    timer = game.time.create(false);
     timer.loop(tiempoGeneral, crearNotas, this);
-    timer.start(); 
+    timer.start();
 
 
     for(var i=1; i<=5; i++){
@@ -113,110 +112,80 @@ function crearNotasRandom(){
     graphics2.destroy();
 }
 
-function cancionCompases(){
+function crearNotas(){
 
-    cancion = [{ time : 1, note : 'C4', dur : '4n'},
-        { time : 1.25, note : 'C4', dur : '4n'},
+cancion = [{ time : 1, note : 'C4', dur : '4n'},
         { time : 1.5, note : 'C4', dur : '4n'},
-        { time : 1.75, note : 'D4', dur : '4n'},
-        { time : 2, note : 'E4', dur : '2n'},
-        { time : 2.5, note : 'E4', dur : '2n'}, //HASTA AQUI PARTE1
-        { time : 3, note : 'D4', dur : '4n'},
-        { time : 3.25, note : 'C4', dur : '4n'},
-        { time : 3.5, note : 'D4', dur : '4n'}, 
-        { time : 3.75, note : 'E4', dur : '4n'},
-        { time : 4, note : 'C4', dur : '2n'}, //HASTA AQUI PARTE2
-        { time : 5, note : 'C4', dur : '4n'}, //SE REPITE TODO DE NUEVO
-        { time : 5.25, note : 'C4', dur : '4n'},
+        { time : 2, note : 'C4', dur : '4n'},
+        { time : 2.5, note : 'D4', dur : '4n'},
+        { time : 3, note : 'E4', dur : '2n'},
+        { time : 4, note : 'E4', dur : '2n'}, //HASTA AQUI PARTE1
+        { time : 5, note : 'D4', dur : '4n'},
         { time : 5.5, note : 'C4', dur : '4n'},
-        { time : 5.75, note : 'D4', dur : '4n'},
-        { time : 6, note : 'E4', dur : '2n'},
-        { time : 6.5, note : 'E4', dur : '2n'},  //HASTA AQUI PARTE3
-        { time : 7, note : 'D4', dur : '4n'},
-        { time : 7.25, note : 'C4', dur : '4n'},
-        { time : 7.5, note : 'D4', dur : '4n'},
-        { time : 7.75, note : 'E4', dur : '4n'},
-        { time : 8, note : 'C4', dur : '2n'}, //HASTA AQUI PARTE4
-        { time : 8.75, note : 'E4', dur : '4n'},
-        { time : 9, note : 'C4', dur : '2n'},
-        { time : 9.75, note : 'E4', dur : '4n'},
-        { time : 10, note : 'C4', dur : '2n'},
-        { time : 10.75, note : 'E4', dur : '4n'},
-        { time : 11, note : 'C4', dur : '4n'},
-        { time : 11.25, note : 'E4', dur : '4n'},
-        { time : 11.5, note : 'C4', dur : '4n'},
-        { time : 11.75, note : 'E4', dur : '4n'},
-        { time : 12, note : 'C4', dur : '2n'}];
+        { time : 6, note : 'D4', dur : '4n'},
+        { time : 6.5, note : 'E4', dur : '4n'},
+        { time : 7, note : 'C4', dur : '2n'}, //HASTA AQUI PARTE2
+        { time : 9, note : 'C4', dur : '4n'}, //SE REPITE TODO DE NUEVO
+        { time : 9.5, note : 'C4', dur : '4n'},
+        { time : 10, note : 'C4', dur : '4n'},
+        { time : 10.5, note : 'D4', dur : '4n'},
+        { time : 11, note : 'E4', dur : '2n'},
+        { time : 12, note : 'E4', dur : '2n'},  //HASTA AQUI PARTE3
+        { time : 13, note : 'D4', dur : '4n'},
+        { time : 13.5, note : 'C4', dur : '4n'},
+        { time : 14, note : 'D4', dur : '4n'},
+        { time : 14.5, note : 'E4', dur : '4n'},
+        { time : 15, note : 'C4', dur : '2n'}, //HASTA AQUI PARTE4
+        { time : 16.5, note : 'E4', dur : '4n'},
+        { time : 17, note : 'C4', dur : '2n'},
+        { time : 18.5, note : 'E4', dur : '4n'},
+        { time : 19, note : 'C4', dur : '2n'},
+        { time : 20.5, note : 'E4', dur : '4n'},
+        { time : 21, note : 'C4', dur : '4n'},
+        { time : 21.5, note : 'E4', dur : '4n'},
+        { time : 22, note : 'C4', dur : '4n'},
+        { time : 22.5, note : 'E4', dur : '4n'},
+        { time : 23, note : 'C4', dur : '2n'}];
    
 
+   if(pulso>=cancion.length-1){
+    pulso = 0;
+   }else{
+
+    pulso++;
+   }
     
-var notasEncompas = [];
-console.log(cancion.length-1);
-var ultimoCompas = Math.floor(cancion[cancion.length-1].time);
+var notasEnPulso = [];
+    cancion.forEach(function(notaEnPulso) {
 
-console.log(ultimoCompas);
+                              var TiempoDeNota = Math.floor(notaEnPulso.time);
 
+                              if(TiempoDeNota == pulso){
 
-for(var i=0; i<=ultimoCompas; i++){
-var compasActual=[];
- cancion.forEach(function(notaEncompas, index) {
-
-                              var TiempoDeNota = Math.floor(notaEncompas.time);
-                             
-                              if(TiempoDeNota == i){
-
-                                compasActual.push(notaEncompas);
-                               
+                                notasEnPulso.push(TiempoDeNota);
+                                console.log(notasEnPulso.length);
                               }
                              
                     });
- cancionEnCompases.push(compasActual);
-}
-
-   console.log(cancionEnCompases);
-
-}
 
 
-function crearNotas(){
+    notaActual = cancion[pulso];
 
-var compasActual = cancionEnCompases[compas];
-var cantidadNotas = compasActual.length;
-var notaaEjecutar = 0;
+    if(pulso == 0 ){
 
-console.log('estoy en compas ' + compas);
-
-
-if(compas >= 12){
-
-    compas = 0;
-}
-
-
-    compasActual.forEach(function(nota, index) {  
-
+        notaAnterior = cancion[pulso];
+    }else{
+         notaAnterior = cancion[pulso-1];   
+    }
     
-    
-        var timeCortado = nota.time - compas;
-var timeEnTime = timeCortado*tiempoGeneral;
-        console.log('time cortado ' + timeCortado*1000);
-      //  console.log(nota);
-
-        game.time.events.add(timeEnTime, lanzarNota, this, index);
-
-     });
-  
-function lanzarNota(notaaEjecutar){
-
-
-    notaActual = compasActual[notaaEjecutar];
-    console.log(notaActual);
     var notaPos = notaActual.note;
 
     var tiempoNotasExisten = [1,2,4,8];
     var tiempoNota = notaActual.dur;
 
+   attackTime = notaActual.time - notaAnterior.time;
   
+   console.log('pulso ' + pulso + ' tiempoNotaActual ' + notaActual.time +' attackTime ' + attackTime);
 
    switch (tiempoNota){
 
@@ -286,11 +255,6 @@ function lanzarNota(notaaEjecutar){
     notaDrop.body.gravity.y = 200;
     notasGrupo.add(notaDrop);
     graphics2.destroy();
-
-
-
- }  
-     compas++; 
 }
 
 function dothis(){
@@ -332,7 +296,7 @@ function update() {
 
  game.physics.arcade.overlap(notasGrupo, teclasGrupo,null,overlapHandler,this)
  
-
+//console.log(timer.duration.toFixed(0));
 }
 
 function overlapHandler(nota, tecla){

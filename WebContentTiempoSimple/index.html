@@ -12,19 +12,18 @@
 <script src="js/tone.js"></script>
 
 <script type="text/javascript">
-
 var synth = new Tone.Synth({
 			"oscillator" : {
-				"type" : "triangle",
+				"type" : "square",
 				"harmonicity" : 0.5,
 				"modulationType" : "sine"
 			},
 			"envelope" : {
 				"attackCurve" : "exponential",
-				"attack" : 0.001,
-				"decay" : 0.1,
-				"sustain" : 1,
-				"release" : 0.01,
+				"attack" : 0.1,
+				"decay" : 0.5,
+				"sustain" : 0.5,
+				"release" : 0.1,
 			},
 			"portamento" : 0.1
 		}).toMaster();
