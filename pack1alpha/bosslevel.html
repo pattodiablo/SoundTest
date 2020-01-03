@@ -6,8 +6,7 @@
 <script src="js/tone.js"></script>
 
 <script type="text/javascript">
-    var synth = new Tone.FMSynth().toMaster();
-     {
+    var synth = new Tone.FMSynth([{
 harmonicity : 3 ,
 modulationIndex : 10 ,
 detune : 0 ,
@@ -31,8 +30,9 @@ attack : 0.5 ,
 decay : 0 ,
 sustain : 1 ,
 release : 0.5
-}
-}
+}]
+}).toMaster();
+     
 
    function sonar(){
 
