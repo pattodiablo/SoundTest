@@ -337,6 +337,7 @@ function update() {
 
 function overlapHandler(nota, tecla){
 
+        tecla.tint = Math.random() * 0xffffff;
        notasGrupo.remove(nota);
 
        sonarMusica(tecla,nota.tiempo);
