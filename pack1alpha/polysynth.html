@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>polysynth</title>
+
+    <script src="js/tone.js"></script>
+
+    <script type="text/javascript">
+      //a polysynth composed of 6 Voices of Synth
+var synth = new Tone.PolySynth(6, Tone.Synth, {
+  oscillator : {
+		type : "sine"
+	}
+}).toMaster();
+//set the attributes using the set interface
+synth.set("detune", -1200);
+//play a chord
+synth.triggerAttackRelease(["C4", "E4", "A4"], "1n",'1:0');
+synth.triggerAttackRelease(["C4", "E4", "G4"], "1n",'2:0');
+synth.triggerAttackRelease(["B4", "E4", "G#4"], "1n",'3:0');
+synth.triggerAttackRelease(["C4", "E4", "A4"], "1n",'4:0');
+synth.triggerAttackRelease(["C#4", "F#4", "A4"], "1n",'5:0');
+synth.triggerAttackRelease(["C4", "E4", "G4"], "1n",'6:0');
+synth.triggerAttackRelease(["B4", "E4", "G#4"], "1n",'7:0');
+synth.triggerAttackRelease(["C4", "E4", "A4"], "1n",'8:0');
+synth.triggerAttackRelease(["C4", "E4", "A4", 'A5'], "1n",'9:0');
+synth.triggerAttackRelease(["C4", "E4", "G4", 'C6'], "1n",'10:0');
+synth.triggerAttackRelease(["B4", "E4", "G#4", 'D6'], "1n",'11:0');
+synth.triggerAttackRelease(["C4", "E4", "A4", 'A5'], "1n",'12:0');
+synth.triggerAttackRelease(["C#4", "F#4", "A4", 'F#5'], "1n",'13:0');
+synth.triggerAttackRelease(["C4", "E4", "G4", 'A5'], "1n",'14:0');
+synth.triggerAttackRelease(["B4", "E4", "G#4", 'B5'], "1n",'15:0');
+synth.triggerAttackRelease(["C4", "E4", "A4", 'D6'], "1n",'16:0');
+synth.triggerAttackRelease(["C4", "E4", "A4"], "1n",'17:0');
+synth.triggerAttackRelease(["C4", "E4", "G4"], "1n",'18:0');
+synth.triggerAttackRelease(["B4", "E4", "G#4"], "1n",'19:0');
+synth.triggerAttackRelease(["C4", "E4", "A4"], "1n",'20:0');
+synth.triggerAttackRelease(["C#4", "F#4", "A4"], "1n",'21:0');
+synth.triggerAttackRelease(["C4", "E4", "G4"], "1n",'22:0');
+synth.triggerAttackRelease(["B4", "E4", "G#4"], "1n",'23:0');
+synth.triggerAttackRelease(["C4", "E4", "A4"], "1n",'24:0');
+synth.triggerAttackRelease(["C4", "E4", "A4", 'A5'], "1n",'25:0');
+synth.triggerAttackRelease(["C4", "E4", "G4", 'C6'], "1n",'26:0');
+synth.triggerAttackRelease(["B4", "E4", "G#4", 'D6'], "1n",'27:0');
+synth.triggerAttackRelease(["C4", "E4", "A4", 'A5'], "1n",'28:0');
+synth.triggerAttackRelease(["C#4", "F#4", "A4", 'F#5'], "1n",'29:0');
+synth.triggerAttackRelease(["C4", "E4", "G4", 'A5'], "1n",'30:0');
+synth.triggerAttackRelease(["B4", "E4", "G#4", 'B5'], "1n",'31:0');
+synth.triggerAttackRelease(["C4", "E4", "A4", 'D6'], "1n",'32:0');
+
+var synthA = new Tone.Synth({
+  oscillator: {
+    type: 'fmsquare',
+    modulationType: 'square',
+    modulationIndex: 3,
+    harmonicity: 4
+  },
+  envelope: {
+    attack: 0.001,
+    decay: 0.1,
+    sustain: 0.1,
+    release: 0.1
+  }
+}).toMaster()
+synth.triggerAttackRelease('A3', "8n",'9:0:0');
+synth.triggerAttackRelease('A3', "8n",'9:0:1');
+synth.triggerAttackRelease('A3', "8n",'9:1:0');
+synth.triggerAttackRelease('A3', "8n",'9:1:1');
+synth.triggerAttackRelease('A3', "8n",'9:2:0');
+synth.triggerAttackRelease('A3', "8n",'9:2:1');
+synth.triggerAttackRelease('A3', "8n",'9:3:0');
+synth.triggerAttackRelease('A3', "8n",'9:3:1');
+synth.triggerAttackRelease('C3', "8n",'10:0:0');
+synth.triggerAttackRelease('C3', "8n",'10:0:1');
+synth.triggerAttackRelease('C3', "8n",'10:1:0');
+synth.triggerAttackRelease('C3', "8n",'10:1:1');
+synth.triggerAttackRelease('C3', "8n",'10:2:0');
+synth.triggerAttackRelease('C3', "8n",'10:2:1');
+synth.triggerAttackRelease('C3', "8n",'10:3:0');
+synth.triggerAttackRelease('C3', "8n",'10:3:1');
+synth.triggerAttackRelease('E3', "8n",'11:0:0');
+synth.triggerAttackRelease('E3', "8n",'11:0:1');
+synth.triggerAttackRelease('E3', "8n",'11:1:0');
+synth.triggerAttackRelease('E3', "8n",'11:1:1');
+synth.triggerAttackRelease('E3', "8n",'11:2:0');
+synth.triggerAttackRelease('E3', "8n",'11:2:1');
+synth.triggerAttackRelease('E3', "8n",'11:3:0');
+synth.triggerAttackRelease('E3', "8n",'11:3:1');
+synth.triggerAttackRelease('A3', "8n",'12:0:0');
+synth.triggerAttackRelease('A3', "8n",'12:0:1');
+synth.triggerAttackRelease('A3', "8n",'12:1:0');
+synth.triggerAttackRelease('A3', "8n",'12:1:1');
+synth.triggerAttackRelease('A3', "8n",'12:2:0');
+synth.triggerAttackRelease('A3', "8n",'12:2:1');
+synth.triggerAttackRelease('A3', "8n",'12:3:0');
+synth.triggerAttackRelease('A3', "8n",'12:3:1');
+synth.triggerAttackRelease('F#3', "8n",'13:0:0');
+synth.triggerAttackRelease('F#3', "8n",'13:0:1');
+synth.triggerAttackRelease('F#3', "8n",'13:1:0');
+synth.triggerAttackRelease('F#3', "8n",'13:1:1');
+synth.triggerAttackRelease('F#3', "8n",'13:2:0');
+synth.triggerAttackRelease('F#3', "8n",'13:2:1');
+synth.triggerAttackRelease('F#3', "8n",'13:3:0');
+synth.triggerAttackRelease('F#3', "8n",'13:3:1');
+synth.triggerAttackRelease('C3', "8n",'14:0:0');
+synth.triggerAttackRelease('C3', "8n",'14:0:1');
+synth.triggerAttackRelease('C3', "8n",'14:1:0');
+synth.triggerAttackRelease('C3', "8n",'14:1:1');
+synth.triggerAttackRelease('C3', "8n",'14:2:0');
+synth.triggerAttackRelease('C3', "8n",'14:2:1');
+synth.triggerAttackRelease('C3', "8n",'14:3:0');
+synth.triggerAttackRelease('C3', "8n",'14:3:1');
+synth.triggerAttackRelease('E3', "8n",'15:0:0');
+synth.triggerAttackRelease('E3', "8n",'15:0:1');
+synth.triggerAttackRelease('E3', "8n",'15:1:0');
+synth.triggerAttackRelease('E3', "8n",'15:1:1');
+synth.triggerAttackRelease('E3', "8n",'15:2:0');
+synth.triggerAttackRelease('E3', "8n",'15:2:1');
+synth.triggerAttackRelease('E3', "8n",'15:3:0');
+synth.triggerAttackRelease('E3', "8n",'15:3:1');
+synth.triggerAttackRelease('A3', "8n",'16:0:0');
+synth.triggerAttackRelease('A3', "8n",'16:0:1');
+synth.triggerAttackRelease('A3', "8n",'16:1:0');
+synth.triggerAttackRelease('A3', "8n",'16:1:1');
+synth.triggerAttackRelease('A3', "8n",'16:2:0');
+synth.triggerAttackRelease('A3', "8n",'16:2:1');
+synth.triggerAttackRelease('A3', "8n",'16:3:0');
+synth.triggerAttackRelease('A3', "8n",'16:3:1');
+synth.triggerAttackRelease('A3', "8n",'17:0:0');
+synth.triggerAttackRelease('A3', "8n",'17:0:1');
+synth.triggerAttackRelease('A3', "8n",'17:1:0');
+synth.triggerAttackRelease('A3', "8n",'17:1:1');
+synth.triggerAttackRelease('A3', "8n",'17:2:0');
+synth.triggerAttackRelease('A3', "8n",'17:2:1');
+synth.triggerAttackRelease('A3', "8n",'17:3:0');
+synth.triggerAttackRelease('A3', "8n",'17:3:1');
+synth.triggerAttackRelease('C3', "8n",'18:0:0');
+synth.triggerAttackRelease('C3', "8n",'18:0:1');
+synth.triggerAttackRelease('C3', "8n",'18:1:0');
+synth.triggerAttackRelease('C3', "8n",'18:1:1');
+synth.triggerAttackRelease('C3', "8n",'18:2:0');
+synth.triggerAttackRelease('C3', "8n",'18:2:1');
+synth.triggerAttackRelease('C3', "8n",'18:3:0');
+synth.triggerAttackRelease('C3', "8n",'18:3:1');
+synth.triggerAttackRelease('E3', "8n",'19:0:0');
+synth.triggerAttackRelease('E3', "8n",'19:0:1');
+synth.triggerAttackRelease('E3', "8n",'19:1:0');
+synth.triggerAttackRelease('E3', "8n",'19:1:1');
+synth.triggerAttackRelease('E3', "8n",'19:2:0');
+synth.triggerAttackRelease('E3', "8n",'19:2:1');
+synth.triggerAttackRelease('E3', "8n",'19:3:0');
+synth.triggerAttackRelease('E3', "8n",'19:3:1');
+synth.triggerAttackRelease('A3', "8n",'20:0:0');
+synth.triggerAttackRelease('A3', "8n",'20:0:1');
+synth.triggerAttackRelease('A3', "8n",'20:1:0');
+synth.triggerAttackRelease('A3', "8n",'20:1:1');
+synth.triggerAttackRelease('A3', "8n",'20:2:0');
+synth.triggerAttackRelease('A3', "8n",'20:2:1');
+synth.triggerAttackRelease('A3', "8n",'20:3:0');
+synth.triggerAttackRelease('A3', "8n",'20:3:1');
+synth.triggerAttackRelease('F#3', "8n",'21:0:0');
+synth.triggerAttackRelease('F#3', "8n",'21:0:1');
+synth.triggerAttackRelease('F#3', "8n",'21:1:0');
+synth.triggerAttackRelease('F#3', "8n",'21:1:1');
+synth.triggerAttackRelease('F#3', "8n",'21:2:0');
+synth.triggerAttackRelease('F#3', "8n",'21:2:1');
+synth.triggerAttackRelease('F#3', "8n",'21:3:0');
+synth.triggerAttackRelease('F#3', "8n",'21:3:1');
+synth.triggerAttackRelease('C3', "8n",'22:0:0');
+synth.triggerAttackRelease('C3', "8n",'22:0:1');
+synth.triggerAttackRelease('C3', "8n",'22:1:0');
+synth.triggerAttackRelease('C3', "8n",'22:1:1');
+synth.triggerAttackRelease('C3', "8n",'22:2:0');
+synth.triggerAttackRelease('C3', "8n",'22:2:1');
+synth.triggerAttackRelease('C3', "8n",'22:3:0');
+synth.triggerAttackRelease('C3', "8n",'22:3:1');
+synth.triggerAttackRelease('E3', "8n",'23:0:0');
+synth.triggerAttackRelease('E3', "8n",'23:0:1');
+synth.triggerAttackRelease('E3', "8n",'23:1:0');
+synth.triggerAttackRelease('E3', "8n",'23:1:1');
+synth.triggerAttackRelease('E3', "8n",'23:2:0');
+synth.triggerAttackRelease('E3', "8n",'23:2:1');
+synth.triggerAttackRelease('E3', "8n",'23:3:0');
+synth.triggerAttackRelease('E3', "8n",'23:3:1');
+synth.triggerAttackRelease('A3', "8n",'24:0:0');
+synth.triggerAttackRelease('A3', "8n",'24:0:1');
+synth.triggerAttackRelease('A3', "8n",'24:1:0');
+synth.triggerAttackRelease('A3', "8n",'24:1:1');
+synth.triggerAttackRelease('A3', "8n",'24:2:0');
+synth.triggerAttackRelease('A3', "8n",'24:2:1');
+synth.triggerAttackRelease('A3', "8n",'24:3:0');
+synth.triggerAttackRelease('A3', "8n",'24:3:1');
+
+var synthB = new Tone.Synth({
+  oscillator: {
+    type: 'triangle8'
+  },
+  envelope: {
+    attack: 2,
+    decay: 1,
+    sustain: 0.4,
+    release: 4
+  }
+}).toMaster()
+synth.triggerAttackRelease('E7', "16n",'17:0:1');
+synth.triggerAttackRelease('A7', "16n",'17:1:1');
+synth.triggerAttackRelease('C7', "16n",'17:2:1');
+synth.triggerAttackRelease('E7', "16n",'17:3:1');
+synth.triggerAttackRelease('E7', "16n",'18:0:1');
+synth.triggerAttackRelease('A7', "16n",'18:1:1');
+synth.triggerAttackRelease('C7', "16n",'18:2:1');
+synth.triggerAttackRelease('E7', "16n",'18:3:1');
+synth.triggerAttackRelease('E7', "16n",'19:0:1');
+synth.triggerAttackRelease('A7', "16n",'19:1:1');
+synth.triggerAttackRelease('C7', "16n",'19:2:1');
+synth.triggerAttackRelease('E7', "16n",'19:3:1');
+synth.triggerAttackRelease('E7', "16n",'20:0:1');
+synth.triggerAttackRelease('A7', "16n",'20:1:1');
+synth.triggerAttackRelease('C7', "16n",'20:2:1');
+synth.triggerAttackRelease('E7', "16n",'20:3:1');
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
