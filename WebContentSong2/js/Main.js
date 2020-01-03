@@ -253,10 +253,6 @@ function lanzarNota(notaaEjecutar){
      case 'G4':
    var pos = 5;
     break;
-
-    default:
-    var pos=1;
-    break;
 }
 
 
