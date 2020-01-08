@@ -187,7 +187,7 @@ function cancionCompases() {
         { time: 23.25, note: 'btn3', dur: '8n' },
         { time: 23.5, note: 'btn4', dur: '8n' },
         { time: 23.75, note: 'btn3', dur: '8n' }, //TERCERA VUELTA FINITO
-        { time: 24, note: 'btn3', dur: '8n' } //VERSO
+        { time: 24, note: 'btn3', dur: '8n' } //VERSO - HACER NUEVOS BUTONS PARA QUE FUNQUE 
     ];
 
 
