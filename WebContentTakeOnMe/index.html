@@ -1,88 +1,107 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
 
-<meta charset="UTF-8" />
-<meta name=viewport content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
 
-<title>SoundTest</title>
+    <title>SoundTest</title>
 
-<script src="lib/phaser.js"></script>
-<script src="js/Main.js"></script>
-<script src="js/tone.js"></script>
+    <script src="lib/phaser.js"></script>
+    <script src="js/Main.js"></script>
+    <script src="js/tone.js"></script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
+        var synth = new Tone.AMSynth({
 
-var synth = new Tone.Synth({
-			"oscillator" : {
-				"type" : "triangle",
-				"harmonicity" : 0.5,
-				"modulationType" : "sine"
-			},
-			"envelope" : {
-				"attackCurve" : "exponential",
-				"attack" : 0.001,
-				"decay" : 0.1,
-				"sustain" : 1,
-				"release" : 0.01,
-			},
-			"portamento" : 0.1
-		}).toMaster();
-   
-   function btnSonar(nombreNota, tiempoNota){
+            'harmonicity': 0,
+            'modulationIndex': 10,
+            'detune': 0,
+            'oscillator': {
+                'type': 'sine'
+            },
+            'envelope': {
+                'attack': 0.01,
+                'decay': 0.01,
+                'sustain': 1,
+                'release': 0.5
+            },
+            'modulation': {
+                'type': 'triangle'
+            },
+            'modulationEnvelope': {
+                'attack': 0.5,
+                'decay': 0,
+                'sustain': 1,
+                'release': 0.5
+            }
+        }).toMaster();
 
- switch (nombreNota){
+        function btnSonar(nombreNota, tiempoNota) {
 
- 	case 'btn1':
+            switch (nombreNota) {
 
- 
- 		 synth.triggerAttackRelease("C4", tiempoNota );
- 	break;
-
- 	case 'btn2':
-
- 		 synth.triggerAttackRelease("D4", tiempoNota );
- 	break;
-
- 	case 'btn3':
-
- 		 synth.triggerAttackRelease("E4", tiempoNota );
- 	break;
-
-	case 'btn4':
-
- 		 synth.triggerAttackRelease("F4", tiempoNota );
- 	break;
-
-	case 'btn5':
-
- 		 synth.triggerAttackRelease("G4", tiempoNota );
- 	break;
-
- }
- ;
-   } 
- function btnParar(nombreNota){
-synth.triggerRelease();
-  
-   } 
+                case 'btn1':
 
 
- 
+                    synth.triggerAttackRelease("B4", tiempoNota);
+                    break;
 
-dothis();
+                case 'btn2':
+
+                    synth.triggerAttackRelease("D5", tiempoNota);
+                    break;
+
+                case 'btn3':
+
+                    synth.triggerAttackRelease("E5", tiempoNota);
+                    break;
+
+                case 'btn4':
+
+                    synth.triggerAttackRelease("F#5", tiempoNota);
+                    break;
+
+                case 'btn5':
+
+                    synth.triggerAttackRelease("G#5", tiempoNota);
+                    break;
+
+                case 'btn6':
+
+                    synth.triggerAttackRelease("A5", tiempoNota);
+                    break;
+
+                case 'btn7':
+
+                    synth.triggerAttackRelease("B5", tiempoNota);
+                    break;
+
+            };
+        }
+
+        function btnParar(nombreNota) {
+            synth.triggerRelease();
+
+        }
 
 
-</script>
-<style>
-body {
-	background: #525252;
-	margin: 0;
-	padding: 0;
-}
-</style>
+
+
+        dothis();
+    </script>
+    <style>
+        body {
+            background: #525252;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 
 </head>
+
 <body>
 </body>
+
 </html>
