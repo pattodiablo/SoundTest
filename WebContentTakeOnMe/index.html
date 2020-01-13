@@ -38,6 +38,46 @@
             }
         }).toMaster();
 
+         function ejecutarBoton(nombreNota) {
+
+            switch (nombreNota) {
+            
+                case 'btn1':
+                synth.triggerAttackRelease("B4");
+                    break;
+
+                case 'btn2':
+
+                    synth.triggerAttackRelease("D5");
+                    break;
+
+                case 'btn3':
+
+                    synth.triggerAttackRelease("E5");
+                    break;
+
+                case 'btn4':
+
+                    synth.triggerAttackRelease("F#5");
+                    break;
+
+                case 'btn5':
+
+                    synth.triggerAttackRelease("G#5");
+                    break;
+
+                case 'btn6':
+
+                    synth.triggerAttackRelease("A5");
+                    break;
+
+                case 'btn7':
+
+                    synth.triggerAttackRelease("B5");
+                    break;
+            }
+         }
+
         function btnSonar(nombreNota, tiempoNota) {
 
             switch (nombreNota) {
@@ -89,7 +129,6 @@
 
 
 
-        dothis();
     </script>
     <style>
         body {

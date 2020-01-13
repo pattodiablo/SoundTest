@@ -22,15 +22,27 @@ function init() {
 
 function preload() {
 
-    game.load.image('speaker', 'assets/speaker.png');
-    game.load.audio('drum1', ['assets/drum1.mp3', 'assets/drum1.ogg']);
-
-
-    game.load.audio('acorde1', ['assets/sounds/acorde1.mp3', 'assets/sounds/acorde1.ogg']);
-    game.load.audio('acorde2', ['assets/sounds/acorde2.mp3', 'assets/sounds/acorde2.ogg']);
+    game.load.image('ejecutarBtn', 'assets/images/ejecutarBtn.png');
+    game.load.image('escucharBtn', 'assets/images/escucharBtn.png');
+   
 }
 
 function create() {
+
+  var ejecutarBtn =  game.add.sprite(game.width/2, game.height/2, 'ejecutarBtn');
+ejecutarBtn.anchor.x = 0.5;
+ejecutarBtn.anchor.y = 0.5;
+ejecutarBtn.scale.setTo(0.3, 0.3);
+ejecutarBtn.inputEnabled = true;
+
+  var escucharBtn =  game.add.sprite(game.width/2, game.height/2+100, 'escucharBtn');
+escucharBtn.anchor.x = 0.5;
+escucharBtn.anchor.y = 0.5;
+escucharBtn.scale.setTo(0.3, 0.3);
+escucharBtn.inputEnabled = true;
+
+ escucharBtn.events.onInputDown.add(escucharCancion);
+    
 
     teclasGrupo = game.add.group();
     notasGrupo = game.add.group();
@@ -58,20 +70,24 @@ function create() {
 
     cancionCompases();
 
-    timer = game.time.create(false);
+
+function escucharCancion(){
+ timer = game.time.create(false);
     timer.loop(tiempoGeneral, crearNotas, this);
     timer.start();
 
+
+}
+
+
+   
 
     for (var i = 1; i <= 7; i++) {
         var musicBtn = game.add.sprite(68 * i + 3, this.game.height / 1.2, graphics.generateTexture());
         musicBtn.anchor.set(0.5);
         musicBtn.inputEnabled = true;
         musicBtn.name = 'btn' + i;
-        var eventoDown = 'sonarMusica' + 2;
-        var eventoUp = 'pararMusica' + 2;
-        console.log(eventoDown);
-        musicBtn.events.onInputDown.add(sonarMusica, this);
+        musicBtn.events.onInputDown.add(sonarBtn, this);
         musicBtn.events.onInputUp.add(pararMusica, this);
         game.physics.enable(musicBtn, Phaser.Physics.ARCADE);
         musicBtn.body.allowGravity = false;
@@ -85,33 +101,7 @@ function create() {
 
 }
 
-function crearNotasRandom() {
 
-    var tiempoNotasExisten = [1, 2, 4, 8];
-    var tiempoNota = tiempoNotasExisten[Math.floor(Math.random() * tiempoNotasExisten.length)];
-    var tamanoNota = (100 / tiempoNota);
-
-    var graphics2 = game.add.graphics(0, 0);
-    graphics2.beginFill(0x7D7D7D);
-    graphics2.lineStyle(1, 0xA6A6A6, 1);
-    graphics2.moveTo(0, 0);
-    graphics2.lineTo(0, tamanoNota);
-    graphics2.lineTo(80, tamanoNota);
-    graphics2.lineTo(80, 0);
-    graphics2.lineTo(0, 0);
-    graphics2.endFill();
-
-
-    var pos = Math.ceil(Math.random() * 5);
-
-    var notaDrop = game.add.sprite(90 * pos + 5, 0, graphics2.generateTexture());
-    notaDrop.anchor.set(0.5);
-    notaDrop.tiempo = tiempoNota;
-    game.physics.enable(notaDrop, Phaser.Physics.ARCADE);
-    notaDrop.body.gravity.y = 100;
-    notasGrupo.add(notaDrop);
-    graphics2.destroy();
-}
 
 function cancionCompases() {
 
@@ -346,18 +336,21 @@ function crearNotas() {
     compas++;
 }
 
-function dothis() {
-    console.log('do a shit in phaser');
+
+function sonarBtn(sprite){
+var nombreNota = sprite.name;
+ ejecutarBoton(nombreNota);
 }
 
 function sonarMusica(sprite, tiempoNota) {
+    console.log('sonandoMusica');
     var nombreNota = sprite.name;
     btnSonar(nombreNota, tiempoNota);
 }
 
-function pararMusica(sprite, tiempoNota) {
+function pararMusica(sprite) {
     var nombreNota = sprite.name;
-    btnParar(nombreNota, tiempoNota);
+    btnParar(nombreNota);
 }
 
 
