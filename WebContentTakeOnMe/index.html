@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <title>SoundTest</title>
+
+    <script src="lib/phaser.js"></script>
+    <script src="js/Main.js"></script>
+    <script src="js/tone.js"></script>
+
+    <script type="text/javascript">
+        var synth = new Tone.AMSynth({
+
+            'harmonicity': 0,
+            'modulationIndex': 10,
+            'detune': 0,
+            'oscillator': {
+                'type': 'sine'
+            },
+            'envelope': {
+                'attack': 0.01,
+                'decay': 0.01,
+                'sustain': 1,
+                'release': 0.5
+            },
+            'modulation': {
+                'type': 'triangle'
+            },
+            'modulationEnvelope': {
+                'attack': 0.5,
+                'decay': 0,
+                'sustain': 1,
+                'release': 0.5
+            }
+        }).toMaster();
+
+        function btnSonar(nombreNota, tiempoNota) {
+
+            switch (nombreNota) {
+
+                case 'btn1':
+
+
+                    synth.triggerAttackRelease("B4", tiempoNota);
+                    break;
+
+                case 'btn2':
+
+                    synth.triggerAttackRelease("D5", tiempoNota);
+                    break;
+
+                case 'btn3':
+
+                    synth.triggerAttackRelease("E5", tiempoNota);
+                    break;
+
+                case 'btn4':
+
+                    synth.triggerAttackRelease("F#5", tiempoNota);
+                    break;
+
+                case 'btn5':
+
+                    synth.triggerAttackRelease("G#5", tiempoNota);
+                    break;
+
+                case 'btn6':
+
+                    synth.triggerAttackRelease("A5", tiempoNota);
+                    break;
+
+                case 'btn7':
+
+                    synth.triggerAttackRelease("B5", tiempoNota);
+                    break;
+                    // TO DO: HACER MAS BOTONCITOS PARA PODER TOCAR MAS NOTAS
+            };
+        }
+
+        function btnParar(nombreNota) {
+            synth.triggerRelease();
+
+        }
+
+
+
+
+        dothis();
+    </script>
+    <style>
+        body {
+            background: #525252;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+</body>
+
+</html>
