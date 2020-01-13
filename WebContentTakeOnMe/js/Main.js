@@ -336,7 +336,6 @@ function crearNotas() {
     compas++;
 }
 
-
 function sonarBtn(sprite){
 var nombreNota = sprite.name;
  ejecutarBoton(nombreNota);
