@@ -13,10 +13,10 @@
     <script src="js/tone.js"></script>
 
     <script type="text/javascript">
-        var synth = new Tone.AMSynth({
+        var synth = new Tone.FMSynth({
 
-            'harmonicity': 0,
-            'modulationIndex': 10,
+            'harmonicity': 50,
+            'modulationIndex': 1,
             'detune': 0,
             'oscillator': {
                 'type': 'sine'
@@ -28,13 +28,13 @@
                 'release': 0.5
             },
             'modulation': {
-                'type': 'triangle'
+                'type': 'sine'
             },
             'modulationEnvelope': {
                 'attack': 0.5,
-                'decay': 0,
-                'sustain': 1,
-                'release': 0.5
+                'decay': 0.5,
+                'sustain': 0.5,
+                'release': 0.1
             }
         }).toMaster();
 
