@@ -6,7 +6,7 @@ var game = new Phaser.Game(540, 960, Phaser.AUTO, "", this);
 
 
  var notaHeader = 0;
- var tiempoGeneral = 1500;
+ var tiempoGeneral = 2000;
  var compas=0;
  var timer;
  var attackTime;
@@ -35,7 +35,7 @@ function create() {
       teclasGrupo = game.add.group();
          notasGrupo = game.add.group();
  game.physics.startSystem(Phaser.Physics.ARCADE);
-   game.physics.arcade.gravity.y = 100;
+   game.physics.arcade.gravity.y = 10;
     acorde1 = game.add.audio('acorde1');
     acorde2 = game.add.audio('acorde2');
 
