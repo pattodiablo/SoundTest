@@ -17,7 +17,7 @@
 
             'harmonicity': 50,
             'modulationIndex': 1,
-            'detune': 0,
+            'detune': 5,
             'oscillator': {
                 'type': 'sine'
             },
@@ -38,12 +38,12 @@
             }
         }).toMaster();
 
-         function ejecutarBoton(nombreNota) {
+        function ejecutarBoton(nombreNota) {
 
             switch (nombreNota) {
-            
+
                 case 'btn1':
-                synth.triggerAttackRelease("B4");
+                    synth.triggerAttackRelease("B4");
                     break;
 
                 case 'btn2':
@@ -76,7 +76,7 @@
                     synth.triggerAttackRelease("B5");
                     break;
             }
-         }
+        }
 
         function btnSonar(nombreNota, tiempoNota) {
 
@@ -125,10 +125,6 @@
             synth.triggerRelease();
 
         }
-
-
-
-
     </script>
     <style>
         body {
