@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+
+    <title>TAKONME2</title>
+
+    <script src="lib/phaser.js"></script>
+    <script src="js/Main.js"></script>
+    <script src="js/tone.js"></script>
+
+    <script type="text/javascript">
+        var synth = new Tone.FMSynth({
+
+            'harmonicity': 50,
+            'modulationIndex': 1,
+            'detune': 5,
+            'oscillator': {
+                'type': 'sine'
+            },
+            'envelope': {
+                'attack': 0.01,
+                'decay': 0.01,
+                'sustain': 1,
+                'release': 0.5
+            },
+            'modulation': {
+                'type': 'sine'
+            },
+            'modulationEnvelope': {
+                'attack': 0.5,
+                'decay': 0.5,
+                'sustain': 0.5,
+                'release': 0.1
+            }
+        }).toMaster();
+
+        function ejecutarBoton(nombreNota) {
+
+            switch (nombreNota) {
+
+                case 'btn1':
+                    synth.triggerAttackRelease("B4");
+                    break;
+
+                case 'btn2':
+
+                    synth.triggerAttackRelease("D5");
+                    break;
+
+                case 'btn3':
+
+                    synth.triggerAttackRelease("E5");
+                    break;
+
+                case 'btn4':
+
+                    synth.triggerAttackRelease("F#5");
+                    break;
+
+                case 'btn5':
+
+                    synth.triggerAttackRelease("G#5");
+                    break;
+
+                case 'btn6':
+
+                    synth.triggerAttackRelease("A5");
+                    break;
+
+                case 'btn7':
+
+                    synth.triggerAttackRelease("B5");
+                    break;
+            }
+        }
+
+        function btnSonar(nombreNota, tiempoNota) {
+
+            switch (nombreNota) {
+
+                case 'btn1':
+
+
+                    synth.triggerAttackRelease("B4", tiempoNota);
+                    break;
+
+                case 'btn2':
+
+                    synth.triggerAttackRelease("D5", tiempoNota);
+                    break;
+
+                case 'btn3':
+
+                    synth.triggerAttackRelease("E5", tiempoNota);
+                    break;
+
+                case 'btn4':
+
+                    synth.triggerAttackRelease("F#5", tiempoNota);
+                    break;
+
+                case 'btn5':
+
+                    synth.triggerAttackRelease("G#5", tiempoNota);
+                    break;
+
+                case 'btn6':
+
+                    synth.triggerAttackRelease("A5", tiempoNota);
+                    break;
+
+                case 'btn7':
+
+                    synth.triggerAttackRelease("B5", tiempoNota);
+                    break;
+                    // TO DO: HACER MAS BOTONCITOS PARA PODER TOCAR MAS NOTAS
+            };
+        }
+
+        function btnParar(nombreNota) {
+            synth.triggerRelease();
+
+        }
+
+        var synth = new Tone.AMSynth({
+
+            'harmonicity': 50,
+            'modulationIndex': 1,
+            'detune': 5,
+            'oscillator': {
+                'type': 'sine'
+            },
+            'envelope': {
+                'attack': 0.01,
+                'decay': 0.01,
+                'sustain': 1,
+                'release': 0.5
+            },
+            'modulation': {
+                'type': 'sine'
+            },
+            'modulationEnvelope': {
+                'attack': 0.5,
+                'decay': 0.5,
+                'sustain': 0.5,
+                'release': 0.1
+            }
+        }).toMaster();
+
+        var synth = new Tone.Synth().toMaster()
+
+//pass in an array of events
+		var part = new Tone.Part(function(time, event){synth.triggerAttackRelease(event.note, event.dur, time)
+}, [{ time : 0, note : 'C4', dur : '4n'},
+	{ time : {'4n' : 1, '8n' : 1}, note : 'E4', dur : '8n'},
+	{ time : '2n', note : 'G4', dur : '16n'},
+	{ time : {'2n' : 1, '8t' : 1}, note : 'B4', dur : '4n'}])
+
+//start the part at the beginning of the Transport's timeline
+part.start(1)
+
+//loop the part 3 times
+part.loop = 3
+part.loopEnd = '4m'
+
+//start/stop the transport
+document.querySelector('tone-play-toggle').addEventListener('change', e => Tone.Transport.toggle())
+    </script>
+    <style>
+        body {
+            background: #525252;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+</body>
+
+</html>
