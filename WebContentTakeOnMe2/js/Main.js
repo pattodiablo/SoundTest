@@ -5,7 +5,7 @@ var notas = ['nota1', 'nota1', 'nota1', 'nota1', 'nota2', 'nota2', 'nota2', 'not
 
 
 var notaHeader = 0;
-var tiempoGeneral = 1100;
+var tiempoGeneral = 1000;
 var compas = 0;
 var timer;
 var attackTime;

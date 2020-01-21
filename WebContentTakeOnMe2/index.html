@@ -13,30 +13,8 @@
     <script src="js/tone.js"></script>
 
     <script type="text/javascript">
-        var synth = new Tone.FMSynth({
-
-            'harmonicity': 50,
-            'modulationIndex': 1,
-            'detune': 5,
-            'oscillator': {
-                'type': 'sine'
-            },
-            'envelope': {
-                'attack': 0.01,
-                'decay': 0.01,
-                'sustain': 1,
-                'release': 0.5
-            },
-            'modulation': {
-                'type': 'sine'
-            },
-            'modulationEnvelope': {
-                'attack': 0.5,
-                'decay': 0.5,
-                'sustain': 0.5,
-                'release': 0.1
-            }
-        }).toMaster();
+        var chorus = new Tone.Chorus(4, 2.5, 1);
+        var synth = new Tone.PolySynth(4, Tone.MonoSynth).connect(chorus);
 
         function ejecutarBoton(nombreNota) {
 
@@ -117,7 +95,7 @@
 
                     synth.triggerAttackRelease("B5", tiempoNota);
                     break;
-                    // TO DO: HACER MAS BOTONCITOS PARA PODER TOCAR MAS NOTAS
+
             };
         }
 
@@ -125,50 +103,59 @@
             synth.triggerRelease();
 
         }
+    </script>
+    <script type="text/javascript">
+        Tone.Transport.bpm.value = 120
+        var synth = new Tone.PolySynth().toMaster()
 
-        var synth = new Tone.AMSynth({
-
-            'harmonicity': 50,
-            'modulationIndex': 1,
-            'detune': 5,
-            'oscillator': {
-                'type': 'sine'
-            },
-            'envelope': {
-                'attack': 0.01,
-                'decay': 0.01,
-                'sustain': 1,
-                'release': 0.5
-            },
-            'modulation': {
-                'type': 'sine'
-            },
-            'modulationEnvelope': {
-                'attack': 0.5,
-                'decay': 0.5,
-                'sustain': 0.5,
-                'release': 0.1
-            }
-        }).toMaster();
-
-        var synth = new Tone.Synth().toMaster()
-
-//pass in an array of events
-		var part = new Tone.Part(function(time, event){synth.triggerAttackRelease(event.note, event.dur, time)
-}, [{ time : 0, note : 'C4', dur : '4n'},
-	{ time : {'4n' : 1, '8n' : 1}, note : 'E4', dur : '8n'},
-	{ time : '2n', note : 'G4', dur : '16n'},
-	{ time : {'2n' : 1, '8t' : 1}, note : 'B4', dur : '4n'}])
-
-//start the part at the beginning of the Transport's timeline
-part.start(1)
-
-//loop the part 3 times
-part.loop = 3
-part.loopEnd = '4m'
-
-//start/stop the transport
-document.querySelector('tone-play-toggle').addEventListener('change', e => Tone.Transport.toggle())
+        synth.triggerAttackRelease('B2', '4n', '0:0:0')
+        synth.triggerAttackRelease('B3', '4n', '0:1:0')
+        synth.triggerAttackRelease('B2', '8n', '0:2:1')
+        synth.triggerAttackRelease('B3', '4n', '0:3:0')
+        synth.triggerAttackRelease('E3', '4n', '1:0:0')
+        synth.triggerAttackRelease('E4', '4n', '1:1:0')
+        synth.triggerAttackRelease('E3', '8n', '1:2:1')
+        synth.triggerAttackRelease('E4', '4n', '1:3:0')
+        synth.triggerAttackRelease('A2', '4n', '2:0:0')
+        synth.triggerAttackRelease('A3', '4n', '2:1:0')
+        synth.triggerAttackRelease('A2', '8n', '2:2:1')
+        synth.triggerAttackRelease('A3', '4n', '2:3:0')
+        synth.triggerAttackRelease('D3', '4n', '3:0:0')
+        synth.triggerAttackRelease('D4', '4n', '3:1:0')
+        synth.triggerAttackRelease('D3', '8n', '3:2:1')
+        synth.triggerAttackRelease('D4', '4n', '3:3:0')
+        synth.triggerAttackRelease('B2', '4n', '4:0:0')
+        synth.triggerAttackRelease('B3', '4n', '4:1:0')
+        synth.triggerAttackRelease('B2', '8n', '4:2:1')
+        synth.triggerAttackRelease('B3', '4n', '4:3:0')
+        synth.triggerAttackRelease('E3', '4n', '5:0:0')
+        synth.triggerAttackRelease('E4', '4n', '5:1:0')
+        synth.triggerAttackRelease('E3', '8n', '5:2:1')
+        synth.triggerAttackRelease('E4', '4n', '5:3:0')
+        synth.triggerAttackRelease('A2', '4n', '6:0:0')
+        synth.triggerAttackRelease('A3', '4n', '6:1:0')
+        synth.triggerAttackRelease('A2', '8n', '6:2:1')
+        synth.triggerAttackRelease('A3', '4n', '6:3:0')
+        synth.triggerAttackRelease('D3', '4n', '7:0:0')
+        synth.triggerAttackRelease('D4', '4n', '7:1:0')
+        synth.triggerAttackRelease('D3', '8n', '7:2:1')
+        synth.triggerAttackRelease('D4', '4n', '7:3:0')
+        synth.triggerAttackRelease('B2', '4n', '8:0:0')
+        synth.triggerAttackRelease('B3', '4n', '8:1:0')
+        synth.triggerAttackRelease('B2', '8n', '8:2:1')
+        synth.triggerAttackRelease('B3', '4n', '8:3:0')
+        synth.triggerAttackRelease('E3', '4n', '9:0:0')
+        synth.triggerAttackRelease('E4', '4n', '9:1:0')
+        synth.triggerAttackRelease('E3', '8n', '9:2:1')
+        synth.triggerAttackRelease('E4', '4n', '9:3:0')
+        synth.triggerAttackRelease('B2', '4n', '10:0:0')
+        synth.triggerAttackRelease('B3', '4n', '10:1:0')
+        synth.triggerAttackRelease('B2', '8n', '10:2:1')
+        synth.triggerAttackRelease('B3', '4n', '10:3:0')
+        synth.triggerAttackRelease('E3', '4n', '11:0:0')
+        synth.triggerAttackRelease('E4', '4n', '11:1:0')
+        synth.triggerAttackRelease('E3', '8n', '11:2:1')
+        synth.triggerAttackRelease('E4', '4n', '11:3:0')
     </script>
     <style>
         body {
