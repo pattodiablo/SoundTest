@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bateria</title>
+
+
+<script src="js/tone.js"></script>
+<script type="text/javascript">
+	
+var vol = new Tone.Volume(0).toMaster();
+var polySynth =  new Tone.PolySynth(3, Tone.FMSynth);
+polySynth.connect(vol);
+
+
+	 var p1 = new Tone.Players({
+                "kick": 'sounds/kick.mp3',
+                "snare": 'sounds/snare.mp3',
+                "hihat": 'sounds/hihat.mp3'
+            }, function(){
+				console.log('he cargado los sonidos');
+            });
+
+	  function hihat(){
+	  	console.log('hihat');
+	  	p1.get('hihat').start;
+	  }
+
+	  function snare(){
+	  	console.log('snare');
+	  	p1.get('snare').start;
+	  }
+
+	  function kick(){
+	  	console.log('kick');
+	  	p1.get('kick').start;
+	  }
+
+	  function music(){
+
+	  	polySynth.triggerAttackRelease('C4', '16n');
+	  }
+p1.connect(vol);
+
+</script>
+</head>
+<body>
+
+<button style="width: 200px;" type="button" onclick="hihat()">hihat</button>
+<button style="width: 200px;" type="button" onclick="snare()">snare</button>
+<button style="width: 200px;" type="button" onclick="kick()">kick</button>
+<button style="width: 200px;" type="button" onclick="music()">music</button>
+
+
+</body>
+</html>

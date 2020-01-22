@@ -194,21 +194,13 @@
             synth.triggerAttackRelease('A3', "8n", '24:3:1');
 
             var p1 = new Tone.Players({
-                "kick": 'https://cdn.jsdelvr.net/gh/Tonejs/Tone.js/examples/audio/505/kick.mp3',
-                "snare": 'https://cdn.jsdelvr.net/gh/Tonejs/Tone.js/examples/audio/505/snare.mp3',
-                "hihat": 'https://cdn.jsdelvr.net/gh/Tonejs/Tone.js/examples/audio/505/hh.mp3'
+                "kick": 'sounds/kick.mp3',
+                "snare": 'sounds/snare.mp3',
+                "hihat": 'sounds/hihat.mp3'
             }).toMaster()
 
             p1.get('hihat').start;
-            if ([0, 4, 8, 12].indexOf(idx) >= 0)
-                p1.get('kick') start();
-            if ([2, 6, 10, 14].indexOf(idx) >= 0)
-                p1.get('snare') start();
-
-            var seq = new Tone.Sequence(function(time, idx) {
-
-            }, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], '8n');
-            seq.start();
+           
 
         }
     </script>
