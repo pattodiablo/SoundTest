@@ -11,6 +11,8 @@ var timer;
 var attackTime;
 var cancion;
 var cancionEnCompases = [];
+var loopTimes = 0;
+var loopActual = 0;
 
 function init() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -25,6 +27,65 @@ function preload() {
     game.load.image('ejecutarBtn', 'assets/images/ejecutarBtn.png');
     game.load.image('escucharBtn', 'assets/images/escucharBtn.png');
 
+}
+
+function  detenerCancion(){
+
+    timer.stop();
+}
+function cancionFondo(){
+
+     Tone.Transport.bpm.value = 120;
+        var synth = new Tone.Synth().toMaster();
+        
+        synth.triggerAttackRelease('B2', '4n', '0:0:0')
+        synth.triggerAttackRelease('B3', '4n', '0:1:0')
+        synth.triggerAttackRelease('B2', '8n', '0:2:1')
+        synth.triggerAttackRelease('B3', '4n', '0:3:0')
+        synth.triggerAttackRelease('E3', '4n', '1:0:0')
+        synth.triggerAttackRelease('E4', '4n', '1:1:0')
+        synth.triggerAttackRelease('E3', '8n', '1:2:1')
+        synth.triggerAttackRelease('E4', '4n', '1:3:0')
+        synth.triggerAttackRelease('A2', '4n', '2:0:0')
+        synth.triggerAttackRelease('A3', '4n', '2:1:0')
+        synth.triggerAttackRelease('A2', '8n', '2:2:1')
+        synth.triggerAttackRelease('A3', '4n', '2:3:0')
+        synth.triggerAttackRelease('D3', '4n', '3:0:0')
+        synth.triggerAttackRelease('D4', '4n', '3:1:0')
+        synth.triggerAttackRelease('D3', '8n', '3:2:1')
+        synth.triggerAttackRelease('D4', '4n', '3:3:0')
+        synth.triggerAttackRelease('B2', '4n', '4:0:0')
+        synth.triggerAttackRelease('B3', '4n', '4:1:0')
+        synth.triggerAttackRelease('B2', '8n', '4:2:1')
+        synth.triggerAttackRelease('B3', '4n', '4:3:0')
+        synth.triggerAttackRelease('E3', '4n', '5:0:0')
+        synth.triggerAttackRelease('E4', '4n', '5:1:0')
+        synth.triggerAttackRelease('E3', '8n', '5:2:1')
+        synth.triggerAttackRelease('E4', '4n', '5:3:0')
+        synth.triggerAttackRelease('A2', '4n', '6:0:0')
+        synth.triggerAttackRelease('A3', '4n', '6:1:0')
+        synth.triggerAttackRelease('A2', '8n', '6:2:1')
+        synth.triggerAttackRelease('A3', '4n', '6:3:0')
+        synth.triggerAttackRelease('D3', '4n', '7:0:0')
+        synth.triggerAttackRelease('D4', '4n', '7:1:0')
+        synth.triggerAttackRelease('D3', '8n', '7:2:1')
+        synth.triggerAttackRelease('D4', '4n', '7:3:0')
+        synth.triggerAttackRelease('B2', '4n', '8:0:0')
+        synth.triggerAttackRelease('B3', '4n', '8:1:0')
+        synth.triggerAttackRelease('B2', '8n', '8:2:1')
+        synth.triggerAttackRelease('B3', '4n', '8:3:0')
+        synth.triggerAttackRelease('E3', '4n', '9:0:0')
+        synth.triggerAttackRelease('E4', '4n', '9:1:0')
+        synth.triggerAttackRelease('E3', '8n', '9:2:1')
+        synth.triggerAttackRelease('E4', '4n', '9:3:0')
+        synth.triggerAttackRelease('B2', '4n', '10:0:0')
+        synth.triggerAttackRelease('B3', '4n', '10:1:0')
+        synth.triggerAttackRelease('B2', '8n', '10:2:1')
+        synth.triggerAttackRelease('B3', '4n', '10:3:0')
+        synth.triggerAttackRelease('E3', '4n', '11:0:0')
+        synth.triggerAttackRelease('E4', '4n', '11:1:0')
+        synth.triggerAttackRelease('E3', '8n', '11:2:1')
+        synth.triggerAttackRelease('E4', '4n', '11:3:0')
 }
 
 function create() {
@@ -75,7 +136,6 @@ function create() {
         timer = game.time.create(false);
         timer.loop(tiempoGeneral, crearNotas, this);
         timer.start();
-
 
     }
 
@@ -214,22 +274,29 @@ function crearNotas() {
 
     if (compas >= cancionEnCompases.length) {
 
-        compas = 0;
-    }
+        compas = 0; 
 
-    var compasActual = cancionEnCompases[compas];
+        console.log('incrementando loop ');
+       loopActual++;
+     
+        if(loopActual>=loopTimes){
+              console.log('terminando cancion ');
+            detenerCancion();
+        }
+    }else{
+
+          var compasActual = cancionEnCompases[compas];
     var cantidadNotas = compasActual.length;
     var notaaEjecutar = 0;
 
     console.log('estoy en compas ' + compas);
 
     console.log('cancion en compases largo ' + cancionEnCompases.length);
+    console.log('loopActual ' + loopActual);
 
-
-
+  
 
     compasActual.forEach(function(nota, index) {
-
 
 
         var timeCortado = nota.time - compas;
@@ -240,6 +307,9 @@ function crearNotas() {
         game.time.events.add(timeEnTime, lanzarNota, this, index);
 
     });
+    }
+
+  
 
     function lanzarNota(notaaEjecutar) {
 
@@ -375,13 +445,21 @@ function decodeMusicTrack() {
 
 function update() {
 
+
     game.physics.arcade.overlap(notasGrupo, teclasGrupo, null, overlapHandler, this)
 
 
 }
 
+var firstOverlap = 0;
 function overlapHandler(nota, tecla) {
 
+
+firstOverlap++;
+if(firstOverlap==1){
+
+cancionFondo();
+}
     tecla.tint = Math.random() * 0xffffff;
     notasGrupo.remove(nota);
 
